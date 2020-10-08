@@ -28,10 +28,8 @@ async def getRace():
         races_dict = json.load(races_file)
         races = races_dict['playersHandbook']
         raceInfo = list(races.items())[random.randint(0,len(races)-1)]
-        print(raceInfo)
         race = raceInfo[0]
         raceAttributes = raceInfo[1]
-        print(race)
         maxAge = raceAttributes['maxAge']
         avgHeight = raceAttributes['height']
         avgWeight = raceAttributes['weight']
@@ -55,7 +53,27 @@ async def getRace():
         return character
 
 async def getClass():
-    pass
+    with open(classPath) as classes_file:
+        classes_dict = json.load(classes_file)
+        classes = classes_dict['playersHandbook']
+        characterClass = list(classes.items())[random.randint(0, len(classes)-1)]
+        className = characterClass[0]
+        characterClass = characterClass[1]
+        base_hp = characterClass['hitPoints']
+        skills = characterClass['skills']
+        available_skills = characterClass['availableSkills']
+        chosen_skills = []
+        for i in range(skills):
+            chosen_skills.append(available_skills.pop(random.randint(0,len(available_skills)-1)))
+        classInfo = {
+            'Class' : className,
+            'Base HP' : base_hp,
+        }
+        for i in range(len(chosen_skills)):
+            skill_nr = f'Skill {i}'
+            classInfo[skill_nr] = chosen_skills[i] 
+        print(classInfo)
+        return classInfo
 
 async def getAbilityScores():
     abilities = ['strength',
@@ -79,9 +97,14 @@ async def chooseSkills():
 @bot.command(name='create', description='', pass_context=True)
 async def create(ctx):
     character = await getRace()
+    classInfo = await getClass()
     print(character)
+    print(classInfo)
     msg = "Character:"
     for name, value in character.items():
+        msg += f"\n\t{name}: {value}"
+    msg += "\nClass:"
+    for name, value in classInfo.items():
         msg += f"\n\t{name}: {value}"
     await ctx.send(msg)
 
