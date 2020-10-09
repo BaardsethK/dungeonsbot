@@ -9,6 +9,7 @@ from os.path import dirname
 
 import random
 import json
+import math
 from dotenv import load_dotenv
 
 dotenv_path = join(dirname(__file__), '.env')
@@ -83,29 +84,32 @@ async def getAbilityScores():
         'charisma',
         'constitution']
     scores = {}
+    modifier = {}
     for ability in abilities:
         dice = []
         for i in range(4):
             dice.append(random.randint(1,6))
         dice.remove(min(dice))
-        scores[ability] =  sum(dice)
-    return scores
-
-async def chooseSkills():
-    pass
+        score = sum(dice)
+        scores[ability] =  score
+        modifier[ability] = math.floor((score - 10) / 2)
+    ability_total = [scores, modifier]
+    return ability_total
 
 @bot.command(name='create', description='', pass_context=True)
 async def create(ctx):
     character = await getRace()
     classInfo = await getClass()
-    print(character)
-    print(classInfo)
+    abilityInfo = await getAbilityScores()
     msg = "Character:"
     for name, value in character.items():
         msg += f"\n\t{name}: {value}"
     msg += "\nClass:"
     for name, value in classInfo.items():
         msg += f"\n\t{name}: {value}"
+    msg += "\nAbilities:"
+    for name, value in abilityInfo[0].items():
+        msg += f"\n\t{name}: {value} ({abilityInfo[1][name]})"
     await ctx.send(msg)
 
 @bot.event
