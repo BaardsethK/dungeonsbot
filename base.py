@@ -23,6 +23,7 @@ bot = commands.Bot(command_prefix = BOT_PREFIX, description=description)
 
 racePath = './races.json'
 classPath = './classes.json'
+backgroundsPath = './backgrounds.json'
 
 async def getRace():
     with open(racePath) as races_file:
@@ -73,7 +74,6 @@ async def getClass():
         for i in range(len(chosen_skills)):
             skill_nr = f'Skill {i}'
             classInfo[skill_nr] = chosen_skills[i] 
-        print(classInfo)
         return classInfo
 
 async def getAbilityScores():
@@ -96,11 +96,41 @@ async def getAbilityScores():
     ability_total = [scores, modifier]
     return ability_total
 
+async def getBackground():
+    with open(backgroundsPath) as backgrounds_file:
+        background_dict = json.load(backgrounds_file)
+        backgrounds = background_dict['playersHandbook']
+        character_background = list(backgrounds.items())[random.randint(0, len(backgrounds)-1)]
+        background_name = character_background[0]
+        background_details = character_background[1]
+        background_feats = {}
+        background_feats['name'] = background_name
+        
+        if 'tools' in background_details:
+            for i in range(background_details['tools']):
+                tool_name = f'Tool #{i+1}'
+                background_feats[tool_name] = background_details['availableTools'][random.randint(1, len(background_details['availableTools'])-1)]
+        if 'languages' in background_details:
+            for i in range(background_details['languages']):
+                lang_name = f'Language #{i+1}'
+                background_feats[lang_name] = background_details['availableLanguages'][random.randint(1, len(background_details['availableLanguages'])-1)]
+        if 'skills' in background_details:
+            if background_details['skills'] == len(background_details['availableSkills']):
+                for i in range(background_details['skills']):
+                    skill_name = f"Skill #{i+1}"
+                    background_feats[skill_name] = background_details['availableSkills'][i]
+            else:
+                for i in range(background_details['skills']):
+                    skill_name = f'Skill #{i+1}'
+                    background_feats[skill_name] = background_details['availableSkills'][random.randint(1, len(background_details['availableSkills'])-1)]
+        return background_feats
+
 @bot.command(name='create', description='', pass_context=True)
 async def create(ctx):
     character = await getRace()
     classInfo = await getClass()
     abilityInfo = await getAbilityScores()
+    backgroundInfo = await getBackground()
     msg = "Character:"
     for name, value in character.items():
         msg += f"\n\t{name}: {value}"
@@ -110,6 +140,9 @@ async def create(ctx):
     msg += "\nAbilities:"
     for name, value in abilityInfo[0].items():
         msg += f"\n\t{name}: {value} ({abilityInfo[1][name]})"
+    msg += "\nBackground:"
+    for name,value in backgroundInfo.items():
+        msg += f"\n\t{name}: {value}"
     await ctx.send(msg)
 
 @bot.event
