@@ -1,0 +1,91 @@
+{
+    "playersHandbook": {
+        "dragonborn": {
+            "maxAge" : 80,
+            "height" : 6,
+            "weight" : 250,
+            "subrace" : [
+                "black",
+                "blue",
+                "brass",
+                "bronze",
+                "copper",
+                "gold",
+                "green",
+                "red",
+                "silver",
+                "white"
+            ]
+        },
+        "dwarf": {
+            "maxAge" : 250,
+            "height" : 4,
+            "weight" : 150,
+            "subrace": [
+                "hilldwarf",
+                "mountaindwarf"
+            ]
+        },
+        "elf": {
+            "maxAge" : 750,
+            "height" : 6,
+            "weight" : 170,
+            "subrace": [
+                "highelf",
+                "woodelf",
+                "darkelf"
+            ]
+        },
+        "gnome": {
+            "maxAge" : 500,
+            "height" : 3,
+            "weight" : 40,
+            "subrace" : [
+                "deepGnome",
+                "rockGnome"
+            ]
+        },
+        "halfElf": {
+            "maxAge" : 180,
+            "height" : 5,
+            "weight" : 190
+
+        },
+        "halfling":{
+            "maxAge" : 150,
+            "height" : 3,
+            "weight" : 40,
+            "subrace" : [
+                "lightfoot",
+                "stout"
+            ]
+
+        },
+        "halfOrc":{
+            "maxAge" : 75,
+            "height" : 6,
+            "weight": 210
+        },
+        "human":{
+            "maxAge" : 85,
+            "height" : 5,
+            "weight" : 165,
+            "subrace" : [
+                "calishite",
+                "chondathan",
+                "damaran",
+                "illuskan",
+                "mulan",
+                "rashemi",
+                "shou",
+                "tethyrian",
+                "turami"
+            ]
+        },
+        "tiefling":{
+            "maxAge" : 110,
+            "height" : 5,
+            "weight" : 150
+        }
+    }
+}

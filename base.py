@@ -42,13 +42,15 @@ async def getRace():
 
         age = random.randint(10, maxAge)
         height = avgHeight * (1 + random.uniform(-0.1, 0.1))
+        height_inch, height_feet = math.modf(height)
+        height_inch = height_inch / (1/12)
         weightHeightRatio = avgWeight * (height / avgHeight)
         weight = weightHeightRatio * (1 + random.uniform(-0.1, 0.1))
         character = {
             "Race" : race,
             "Age" : age,
-            "Height" : height,
-            "Weight" : weight,
+            "Height" : f"{height_feet} ft, {math.floor(height_inch)} in",
+            "Weight" : round(weight, 1),
         }
         if len(subrace) > 0:
             character["Subrace"] = subrace
@@ -72,7 +74,7 @@ async def getClass():
             'Base HP' : base_hp,
         }
         for i in range(len(chosen_skills)):
-            skill_nr = f'Skill {i}'
+            skill_nr = f'Skill {i+1}'
             classInfo[skill_nr] = chosen_skills[i] 
         return classInfo
 
@@ -107,22 +109,37 @@ async def getBackground():
         background_feats['name'] = background_name
         
         if 'tools' in background_details:
-            for i in range(background_details['tools']):
-                tool_name = f'Tool #{i+1}'
-                background_feats[tool_name] = background_details['availableTools'][random.randint(1, len(background_details['availableTools'])-1)]
+            length = len(background_details['availableTools'])
+            if background_details['tools'] == length:
+                for i in range(background_details['tools']):
+                    skill_name = f"Tool {i+1}"
+                    background_feats[skill_name] = background_details['availableTools'][i]
+            else:
+                for i in range(background_details['tools']):
+                    skill_name = f'Tool {i+1}'
+                    background_feats[skill_name] = background_details['availableTools'][random.randint(1, length-1)]
+
         if 'languages' in background_details:
-            for i in range(background_details['languages']):
-                lang_name = f'Language #{i+1}'
-                background_feats[lang_name] = background_details['availableLanguages'][random.randint(1, len(background_details['availableLanguages'])-1)]
+            length = len(background_details['availableLanguages'])
+            if background_details['languages'] == length:
+                for i in range(background_details['languages']):
+                    skill_name = f"Language {i+1}"
+                    background_feats[skill_name] = background_details['availableLanguages'][i]
+            else:
+                for i in range(background_details['languages']):
+                    skill_name = f'Language {i+1}'
+                    background_feats[skill_name] = background_details['availableLanguages'][random.randint(1, length-1)]
+        
         if 'skills' in background_details:
-            if background_details['skills'] == len(background_details['availableSkills']):
+            length = len(background_details['availableSkills'])
+            if background_details['skills'] == length:
                 for i in range(background_details['skills']):
-                    skill_name = f"Skill #{i+1}"
+                    skill_name = f"Skill {i+1}"
                     background_feats[skill_name] = background_details['availableSkills'][i]
             else:
                 for i in range(background_details['skills']):
-                    skill_name = f'Skill #{i+1}'
-                    background_feats[skill_name] = background_details['availableSkills'][random.randint(1, len(background_details['availableSkills'])-1)]
+                    skill_name = f'Skill {i+1}'
+                    background_feats[skill_name] = background_details['availableSkills'][random.randint(1, length-1)]
         return background_feats
 
 @bot.command(name='create', description='', pass_context=True)

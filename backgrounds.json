@@ -1,0 +1,32 @@
+{
+    "playersHandbook": {
+        "urchin" :{
+            "tools": 2,
+            "availableTools" :[
+                "disguiseKit",
+                "thievesTools"
+            ],
+            "skills": 2,
+            "availableSkills" : [
+                "sleightOfHand",
+                "stealth"
+            ]
+        },
+        "noble" :{
+            "tools": 1,
+            "availableTools":[
+                "diceSet",
+                "dragonchessSet",
+                "gamingSet",
+                "playingCardSet",
+                "threeDragonAnteSet"
+            ],
+            "languages": 1,
+            "availableLanguages":[
+                "common",
+                "elvish",
+                "dwarven"
+            ]
+        }
+    }
+}

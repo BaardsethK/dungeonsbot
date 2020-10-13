@@ -1,0 +1,163 @@
+{
+    "playersHandbook" : {
+        "barbarian":{
+            "hitPoints":12,
+            "skills" : 3,
+            "availableSkills":[
+                "animalHandling",
+                "athletics",
+                "intimidation",
+                "nature",
+                "perception",
+                "survival"
+            ]
+        },
+        "bard":{
+            "hitPoints":8,
+            "skills" : 3,
+            "availableSkills":[
+                "athletics",
+                "acrobatics",
+                "sleightOfHand",
+                "stealth",
+                "arcana",
+                "history",
+                "investigation",
+                "nature",
+                "religion",
+                "animalHandling",
+                "insight",
+                "medicine",
+                "perception",
+                "survival",
+                "deception",
+                "intimidation",
+                "performance",
+                "persuasion"
+            ]
+
+        },
+        "cleric":{
+            "hitPoints" : 8,
+            "skills": 2,
+            "availableSkills":[
+                "history",
+                "insight",
+                "medicine",
+                "persuasion",
+                "religion"
+            ]
+        },
+        "druid":{
+            "hitPoints" : 8,
+            "skills" : 2,
+            "availableSkills":[
+                "arcana",
+                "animalHandling",
+                "insight",
+                "medicine",
+                "nature",
+                "perception",
+                "religion",
+                "survival"
+            ]
+
+        },
+        "fighter":{
+            "hitPoints" : 8,
+            "skills" : 2,
+            "availableSkills" : [
+                "animalHandling",
+                "athletics",
+                "intimidation",
+                "nature",
+                "perception",
+                "survival"
+            ]
+        },
+        "monk":{
+            "hitPoints" : 8,
+            "skills" : 2,
+            "availableSkills" : [
+                "animalHandling",
+                "athletics",
+                "intimidation",
+                "nature",
+                "perception",
+                "survival"
+            ]
+        },
+        "paladin":{
+            "hitPoints" : 8,
+            "skills" : 2,
+            "availableSkills" : [
+                "animalHandling",
+                "athletics",
+                "intimidation",
+                "nature",
+                "perception",
+                "survival"
+            ]
+        },
+        "ranger":{
+            "hitPoints" : 8,
+            "skills" : 2,
+            "availableSkills" : [
+                "animalHandling",
+                "athletics",
+                "intimidation",
+                "nature",
+                "perception",
+                "survival"
+            ]
+        },
+        "rogue":{
+            "hitPoints" : 8,
+            "skills" : 4,
+            "availableSkills" : [
+                "animalHandling",
+                "athletics",
+                "intimidation",
+                "nature",
+                "perception",
+                "survival"
+            ]
+        },
+        "sorcerer":{
+            "hitPoints" : 8,
+            "skills" : 2,
+            "availableSkills" : [
+                "animalHandling",
+                "athletics",
+                "intimidation",
+                "nature",
+                "perception",
+                "survival"
+            ]
+        },
+        "warlock":{
+            "hitPoints" : 8,
+            "skills" : 2,
+            "availableSkills" : [
+                "animalHandling",
+                "athletics",
+                "intimidation",
+                "nature",
+                "perception",
+                "survival"
+            ]
+        },
+        "wizard":{
+            "hitPoints" : 8,
+            "skills" : 2,
+            "availableSkills" : [
+                "animalHandling",
+                "athletics",
+                "intimidation",
+                "nature",
+                "perception",
+                "survival"
+            ]
+        }
+    }
+}
