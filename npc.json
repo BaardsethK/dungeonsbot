@@ -1,0 +1,41 @@
+{
+    "playersHandbook" : {
+        "bandit" : {
+            "ac" : 12,
+            "hitPoints": "2d8",
+            "hitPointsMod": 2,
+            "baseSpeed": 30,
+            "xp": 25,
+            "baseStats": {
+                "str": 11,
+                "dex": 12,
+                "con": 12,
+                "int": 10,
+                "wis": 10,
+                "cha": 10
+            },
+            "weapons": 2,
+            "availableWeapons":[
+                "scimitar",
+                "light crossbow"
+            ],
+            "languages": 1,
+            "availableLanguages" : [
+                "common",
+                "halfling",
+                "dwarven"
+            ],
+            "races": [
+                "human",
+                "elf",
+                "dwarven",
+                "halfling",
+                "gnome",
+                "orc",
+                "halfElf",
+                "halfOrc"
+            ]
+
+        }
+    }
+}

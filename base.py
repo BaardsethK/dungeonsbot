@@ -24,6 +24,7 @@ bot = commands.Bot(command_prefix = BOT_PREFIX, description=description)
 racePath = './races.json'
 classPath = './classes.json'
 backgroundsPath = './backgrounds.json'
+npcPath = './npc.json'
 
 async def getRace():
     with open(racePath) as races_file:
@@ -160,6 +161,14 @@ async def create(ctx):
     msg += "\nBackground:"
     for name,value in backgroundInfo.items():
         msg += f"\n\t{name}: {value}"
+    await ctx.send(msg)
+
+@bot.command(name='npc', description='Generate NPC, either by input or randomly', pass_context=True)
+async def npc(ctx):
+    with open(npcPath) as file:
+        npcs_dict = json.load(file)
+        npc_types = npcs_dict['playersHandbook']
+        msg = "placeholder"
     await ctx.send(msg)
 
 @bot.event
